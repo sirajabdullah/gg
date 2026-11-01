@@ -14,6 +14,7 @@ jobs:
           if [ -z "$z" ]; then echo "PokerAI zip not found in repo"; find . -not -path "./.git/*" | head -50; exit 1; fi
           echo "Using $z"
           unzip -o "$z" -d .
+          if [ ! -f PokerAI/app/src/main/java/com/example/pokerai/Config.kt ]; then echo "OLD ZIP: Config.kt is missing. Upload the newest PokerAI_Live.zip."; exit 1; fi
           ls PokerAI
       - uses: actions/setup-java@v4
         with:
